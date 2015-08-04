@@ -54,6 +54,7 @@ class TowersOfHanoi
        
   def valid_move?(from_tower, to_tower)
     value = @towers[from_tower].last
+    
     if @towers[from_tower].empty?
       return false
     elsif @towers[to_tower].empty?

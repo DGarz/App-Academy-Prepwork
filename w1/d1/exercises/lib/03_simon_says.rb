@@ -18,10 +18,11 @@ def first_word(string)
   string.split(" ").first
 end
 
-def titleize(string)
+def titleize(string)            ## refactor titleize
   stop_words = %w(and of for over the)
-  words = string.split(" ")
   title = []
+  words = string.split(" ")
+  
   words.each do |word|
     if title.empty?
       title << word.capitalize

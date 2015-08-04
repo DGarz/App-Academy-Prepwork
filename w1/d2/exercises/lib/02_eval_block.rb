@@ -46,6 +46,6 @@
 # # => "NO BLOCK GIVEN"
 # ```
 
-def eval_block (*arg, &prc)
-  prc.nil? ? (raise "NO BLOCK GIVEN") : prc.call(*arg)
+def eval_block(*args, &prc)
+  prc.nil? ? (raise "NO BLOCK GIVEN") : prc.call(*args)
 end

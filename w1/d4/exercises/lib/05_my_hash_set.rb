@@ -52,7 +52,7 @@ class MyHashSet
   end
   
   def union(set2)
-    new_set = self.class.new                    ##self.class.new is basically so it can be an instance of MyHashSet and we can call our methods on it
+    new_set = self.class.new
     self.to_a.each { |el| new_set.insert(el) }
     set2.to_a.each { |el| new_set.insert(el) }
     new_set
@@ -60,21 +60,16 @@ class MyHashSet
   
   def intersect(set2)
     new_set = self.class.new
-    self.to_a.each do |el| 
-      new_set.insert(el) if self.to_a.include?(el) && set2.to_a.include?(el) 
-    end
-    new_set
-  end
-    
-  def minus(set2)
-    new_set = self.class.new
-    self.to_a.each do |el|
-      new_set.insert(el) unless set2.to_a.include?(el)
-    end
+    self.to_a.each { |el| new_set.insert(el) if set2.include?(el) }
     new_set
   end
   
-end
+  def minus(set2)
+    new_set = self.class.new
+    self.to_a.each { |el| new_set.insert(el) unless set2.include?(el) }
+    new_set
+  end
+    
 
 # Bonus
 #
@@ -83,3 +78,18 @@ end
 # - Write a `set1#==(object)` method. It should return true if `object` is
 #   a `MyHashSet`, has the same size as `set1`, and every member of
 #   `object` is a member of `set1`.
+
+  def symmetric_difference(set2)
+  new_set = self.class.new
+    self.to_a.each { |el| new_set.insert(el) unless set2.include?(el) }
+    set2.to_a.each { |el| new_set.insert(el) unless set2.include?(el) }
+    new_set
+  end
+  
+  def ==(object)
+    if object.is_a? MyHashSet && object.to_a.length
+    end
+  end
+    
+  
+end
