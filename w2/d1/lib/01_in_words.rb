@@ -11,7 +11,6 @@ Tens = {  20 => "twenty", 30 => "thirty", 40 => "forty",
     
 
 
-
 class Fixnum
   
   def in_words
