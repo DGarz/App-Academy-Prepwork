@@ -19,23 +19,25 @@ def guessing_game
     guesses += 1
     puts "Guess a number"
     guess = gets.chomp.to_i
-    print "#{guess}"
-    print "number of guesses #{guesses}"
+    puts "#{guess}"
+    puts "number of guesses #{guesses}"
     
-    won?(guess, game_number)
     analyze(guess, game_number)
+    won?(guess, game_number)
   end
 end
 
 private
 
 def won?(guess, game_num)
-  return "Congratulations you guessed the number!" if guess == game_num
-  
-  return false
+   return true if guess == game_num
+   return false
 end
 
 def analyze(guess, game_num)
+  if guess == game_num
+    return "Congratulations you guessed the number!"
+  end
   guess < game_num ? (puts "too low") : (puts "too high")
 end
 
@@ -52,12 +54,12 @@ def shuffle_file(filename)
 end
   
   
-if __File__ == $0
-  if ARGV.length >= 1
+if __FILE__ == $PROGRAM_NAME
+  if ARGV.length == 1
     shuffle_file(ARGV.shift)
   else
-    puts "What file would you like to shuffle?"
-    file = gets.chomp
-    shuffle_file(file)
+    puts "ENTER FILENAME TO SHUFFLE:"
+    filename = gets.chomp
+    shuffle_file(filename)
   end
 end
